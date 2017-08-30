@@ -41,7 +41,7 @@ def main(server, log_dir, context):
   if not os.path.exists(sample_dir):
     os.makedirs(sample_dir)
 
-  with tf.Session(master=server.target) as sess:
+  with tf.Session(target=server.target) as sess:
     if FLAGS.dataset == 'mnist':
       dcgan = DCGAN(
           sess,
