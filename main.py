@@ -36,6 +36,7 @@ def main(server, log_dir, context):
 
   checkpoint_dir = log_dir + "/checkpoints"
   sample_dir = log_dir + "/samples"
+  data_dir = context.get("data_dir") or "./data"
   if not os.path.exists(checkpoint_dir):
     os.makedirs(checkpoint_dir)
   if not os.path.exists(sample_dir):
@@ -56,7 +57,9 @@ def main(server, log_dir, context):
           input_fname_pattern=FLAGS.input_fname_pattern,
           crop=FLAGS.crop,
           checkpoint_dir=FLAGS.checkpoint_dir,
-          sample_dir=FLAGS.sample_dir)
+          sample_dir=FLAGS.sample_dir,
+          data_dir=data_dir,
+          log_dir=log_dir)
     else:
       dcgan = DCGAN(
           sess,
@@ -70,7 +73,9 @@ def main(server, log_dir, context):
           input_fname_pattern=FLAGS.input_fname_pattern,
           crop=FLAGS.crop,
           checkpoint_dir=FLAGS.checkpoint_dir,
-          sample_dir=FLAGS.sample_dir)
+          sample_dir=FLAGS.sample_dir,
+          data_dir=data_dir,
+          log_dir=log_dir)
 
     show_all_variables()
 
