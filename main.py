@@ -27,6 +27,7 @@ flags.DEFINE_boolean("visualize", False, "True for visualizing, False for nothin
 FLAGS = flags.FLAGS
 
 def main(server, log_dir, context):
+  FLAGS.dataset = context.get("dataset") or FLAGS.dataset
   pp.pprint(flags.FLAGS.__flags)
 
   if FLAGS.input_width is None:
